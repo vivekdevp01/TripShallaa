@@ -1,8 +1,9 @@
 const express = require("express");
 const { RaftingController } = require("../../controllers");
+const { AuthMiddleware } = require("../../middlewares");
 const router = express.Router();
-
-router.post("/", RaftingController.createRafting);
+router.use(AuthMiddleware.isLoggedIn);
+router.post("/", AuthMiddleware.isLoggedIn, RaftingController.createRafting);
 router.delete("/:id", RaftingController.deleteRafting);
 router.put("/:id", RaftingController.updateRafting);
 router.patch("/:id/visibility", RaftingController.toggleRaftingVisibility);

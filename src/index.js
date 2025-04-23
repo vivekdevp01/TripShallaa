@@ -1,10 +1,12 @@
 const express = require("express");
 const http = require("http");
+const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const apiRoutes = require("./routes");
 const { ServerConfig } = require("./config");
 const connectToDB = require("./config/dbConfig");
 const errorHandler = require("./utils/errorHandler");
+const Admin = require("./models/admin");
 const app = express();
 const server = http.createServer(app);
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -33,3 +35,10 @@ async function startServer() {
 }
 
 startServer();
+// async function testFind() {
+//   const admin = await Admin.findOne({ username: "Vivek01" });
+//   console.log(admin ? "✅ Found:" : "❌ Not found:", admin);
+//   mongoose.disconnect();
+// }
+
+// testFind();
