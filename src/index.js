@@ -8,6 +8,7 @@ const connectToDB = require("./config/dbConfig");
 const errorHandler = require("./utils/errorHandler");
 const Admin = require("./models/admin");
 const app = express();
+const path = require("path");
 const server = http.createServer(app);
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -15,7 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.text());
 // app.use(cookieParser());
 // app.use(express.static("public"));
-
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api", apiRoutes);
 
 app.use(errorHandler);

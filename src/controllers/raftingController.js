@@ -16,7 +16,7 @@ async function createRafting(req, res, next) {
       meetingPoint,
       pickupDetails,
       cancellationPolicy,
-      imageGallery,
+
       availableDates,
       rating,
       reviewCount,
@@ -26,7 +26,11 @@ async function createRafting(req, res, next) {
       isPopular,
       isActive,
     } = req.body;
-
+    const baseUrl = `${req.protocol}://${req.get("host")}`;
+    const imagePath =
+      req.files && req.files.length > 0
+        ? req.files.map((file) => `${baseUrl}/uploads/rafting/${file.filename}`)
+        : [];
     const rafting = await RaftingService.createRafting({
       title,
       location,
@@ -40,7 +44,7 @@ async function createRafting(req, res, next) {
       meetingPoint,
       pickupDetails,
       cancellationPolicy,
-      imageGallery,
+      image: imagePath,
       availableDates,
       rating,
       reviewCount,

@@ -62,7 +62,7 @@ const raftingSchema = new mongoose.Schema(
       type: String,
       default: "Non-refundable",
     },
-    imageGallery: {
+    image: {
       type: [String],
       required: true,
       validate: {
