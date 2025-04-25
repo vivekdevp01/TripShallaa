@@ -23,5 +23,12 @@ class CampingRepository extends CrudRepository {
       throw error;
     }
   }
+  async getAllCamps(filter = {}, sort = {}, limit = 10, skip = 0) {
+    const response = await Camping.find(filter)
+      .sort(sort)
+      .limit(limit)
+      .skip(skip);
+    return response;
+  }
 }
 module.exports = CampingRepository;

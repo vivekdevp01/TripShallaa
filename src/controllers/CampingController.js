@@ -79,9 +79,22 @@ async function updateCamping(req, res, next) {
     next(error);
   }
 }
+async function getCampings(req, res, next) {
+  try {
+    const response = await CampingService.getAllCampings(req.query);
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Campings fetched successfully",
+      data: response,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
 module.exports = {
   createCamping,
   deleteCamping,
   getCamping,
   updateCamping,
+  getCampings,
 };

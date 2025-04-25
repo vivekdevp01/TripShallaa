@@ -8,4 +8,5 @@ router.post("/", multipleCampingUpload, CampingController.createCamping);
 router.delete("/:id", CampingController.deleteCamping);
 router.get("/:id", CampingController.getCamping);
 router.put("/:id", CampingController.updateCamping);
+router.get("/", CampingController.getCampings);
 module.exports = router;
