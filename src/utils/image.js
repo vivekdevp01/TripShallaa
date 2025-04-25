@@ -3,7 +3,13 @@ const path = require("path");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, "../uploads/rafting")); // stores in src/uploads/rafting
+    let folder = "rafting"; // default
+
+    // You can customize this logic based on your routes or request
+    if (req.baseUrl.includes("camping")) {
+      folder = "camping";
+    }
+    cb(null, path.join(__dirname, `../uploads/${folder}`));
   },
   filename: function (req, file, cb) {
     const ext = path.extname(file.originalname);
@@ -29,4 +35,6 @@ const upload = multer({
 module.exports = {
   singleUpload: upload.single("image"),
   multipleUpload: upload.array("images", 10),
+  singleCampingUpload: upload.single("image"),
+  multipleCampingUpload: upload.array("images", 10),
 };
