@@ -54,11 +54,32 @@ async function updatePaymentStatus(id, updateData) {
     }
     const updated = await queryRepository.update(id, updateData);
     if (updated.paymentConfirmed === true) {
-      await sendBookingConfirmation(user.email, user.name, user.campCode);
-      await sendWhatsAppBookingConfirmation(
-        user.phone,
+      await sendBookingConfirmation(
+        user.email,
         user.name,
-        user.campCode
+        user.phone,
+        user.campCode, // ✅ instead of campCode
+        updated.numberOfPeople, // Check if this is populated correctly
+        updated.packageName, // Check if this is populated correctly
+        updated.totalAmount, // Check if this is populated correctly
+        updated.advanceReceived, // Check if this is populated correctly
+        updated.balanceAmount, // Check if this is populated correctly
+        updated.checkInDate, // Check if this is populated correctly
+        updated.checkOutDate // Check if this is populated correctly
+      );
+
+      await sendWhatsAppBookingConfirmation(
+        user.email,
+        user.name,
+        user.phone,
+        user.campCode, // ✅ instead of campCode
+        updated.numberOfPeople, // Check if this is populated correctly
+        updated.packageName, // Check if this is populated correctly
+        updated.totalAmount, // Check if this is populated correctly
+        updated.advanceReceived, // Check if this is populated correctly
+        updated.balanceAmount, // Check if this is populated correctly
+        updated.checkInDate, // Check if this is populated correctly
+        updated.checkOutDate // Check if this is populated correctly
       );
     }
     return updated;

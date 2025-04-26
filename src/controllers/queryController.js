@@ -36,7 +36,26 @@ async function findUserByNumber(req, res, next) {
 async function updatePaymentStatus(req, res, next) {
   try {
     const id = req.params.id;
-    const updated = { paymentConfirmed: true };
+    const {
+      numberOfPeople,
+      packageName,
+      totalAmount,
+      advanceReceived,
+      balanceAmount,
+      checkInDate,
+      checkOutDate,
+    } = req.body;
+    // const updated = { paymentConfirmed: true };
+    const updated = {
+      paymentConfirmed: true,
+      numberOfPeople,
+      packageName,
+      totalAmount,
+      advanceReceived,
+      balanceAmount,
+      checkInDate,
+      checkOutDate,
+    };
     const result = await QueryService.updatePaymentStatus(id, updated);
     return res.status(StatusCodes.OK).json({
       success: true,

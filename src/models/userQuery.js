@@ -24,6 +24,13 @@ const userQuerySchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  numberOfPeople: { type: Number },
+  packageName: { type: String },
+  totalAmount: { type: Number },
+  advanceReceived: { type: Number },
+  balanceAmount: { type: Number },
+  checkInDate: { type: Date },
+  checkOutDate: { type: Date },
   createdAt: { type: Date, default: Date.now },
 });
 const UserQuery = mongoose.model("UserQuery", userQuerySchema);
