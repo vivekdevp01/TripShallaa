@@ -9,6 +9,7 @@ const errorHandler = require("./utils/errorHandler");
 const Admin = require("./models/admin");
 const app = express();
 const path = require("path");
+const startBookingRemainderCron = require("./utils/cron");
 const server = http.createServer(app);
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -28,6 +29,8 @@ async function startServer() {
 
     server.listen(ServerConfig.PORT, () => {
       console.log(`🚀 Server listening on port ${ServerConfig.PORT}`);
+      startBookingRemainderCron();
+      console.log("🛎️ Booking reminder cron started!");
     });
   } catch (error) {
     console.error("❌ Failed to start the server:", error);

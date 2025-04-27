@@ -15,5 +15,20 @@ class QueryRepository extends CrudRepository {
       throw error;
     }
   }
+  async findByCheckInRange(startDate, endData) {
+    try {
+      const result = await UserQeury.find({
+        checkInDate: {
+          $gte: new Date(startDate),
+          $lte: new Date(endData),
+        },
+        paymentConfirmed: true,
+      });
+      return result;
+    } catch (error) {
+      console.error("Error finding users by check-in date range:", error);
+      throw error;
+    }
+  }
 }
 module.exports = QueryRepository;

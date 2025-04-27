@@ -3,7 +3,10 @@ const { QueryRepository } = require("../repositories");
 const NotFoundError = require("../errors/notFound");
 const BadRequestError = require("../errors/badRequest");
 const { sendBookingConfirmation } = require("../utils/mailer");
-const { sendWhatsAppBookingConfirmation } = require("../utils/whatsapp");
+const {
+  sendWhatsAppBookingConfirmation,
+  sendWhatsappRemainder,
+} = require("../utils/whatsapp");
 
 const queryRepository = new QueryRepository();
 
@@ -52,6 +55,12 @@ async function updatePaymentStatus(id, updateData) {
     if (user.paymentConfirmed) {
       throw new BadRequestError("Booking already confirmed!");
     }
+    if (updateData.totalAmount) {
+      const totalAmount = updateData.totalAmount;
+      const advancePercent = 0.2;
+      updateData.advanceReceived = Math.round(totalAmount * advancePercent);
+      updateData.balanceAmount = totalAmount - updateData.advanceReceived;
+    }
     const updated = await queryRepository.update(id, updateData);
     if (updated.paymentConfirmed === true) {
       await sendBookingConfirmation(
@@ -91,8 +100,42 @@ async function updatePaymentStatus(id, updateData) {
     throw error;
   }
 }
+async function sendCheckInRemainder() {
+  try {
+    const now = new Date();
+    const tomorrowStart = new Date(now);
+    tomorrowStart.setDate(now.getDate() + 1);
+    tomorrowStart.setHours(0, 0, 0, 0); // Set to start of tomorrow
+    const tomorrowEnd = new Date(now);
+    tomorrowEnd.setDate(now.getDate() + 1);
+    tomorrowEnd.setHours(23, 59, 59, 999); // Set to end of tomorrow
+    console.log("Tomorrow start:", tomorrowStart);
+    console.log("Tomorrow end:", tomorrowEnd);
+    const users = await queryRepository.findByCheckInRange(
+      tomorrowStart,
+      tomorrowEnd
+    );
+    for (const user of users) {
+      await sendWhatsappRemainder(user.phone, user.name, user.checkInDate);
+    }
+  } catch (error) {
+    console.log("Error sending check-in remainder:", error);
+    throw error;
+  }
+}
+// checkOutRemainder
+// async function sendCheckOutRemainder(){
+//     try{
+
+//     }
+//     catch(error){
+//         console.log("Error sending check-out remainder:", error);
+//         throw error;
+//     }
+// }
 module.exports = {
   createQuery,
   findUserByNumber,
   updatePaymentStatus,
+  sendCheckInRemainder,
 };
