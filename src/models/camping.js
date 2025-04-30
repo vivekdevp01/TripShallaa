@@ -40,6 +40,27 @@ const campingSchema = new mongoose.Schema({
       type: String, // like 'Bonfire', 'Meals', 'Tents', 'Toilets'
     },
   ],
+  reviews: {
+    type: [
+      {
+        user: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+        rating: {
+          type: Number,
+          required: true,
+          min: 1,
+          max: 5,
+        },
+        comment: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
+    default: [],
+  },
   createdAt: {
     type: Date,
     default: Date.now,

@@ -4,4 +4,5 @@ module.exports = {
   AdminRepository: require("./adminRepository"),
   CampingRepository: require("./campingRepository"),
   QueryRepository: require("./qeuryRepository"),
+  PlaceRepository: require("./placeRepository"),
 };

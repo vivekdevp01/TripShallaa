@@ -4,4 +4,5 @@ module.exports = {
   AdminController: require("./adminController"),
   CampingController: require("./CampingController"),
   QueryController: require("./queryController"),
+  PlaceController: require("./placeController"),
 };
