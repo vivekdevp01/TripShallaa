@@ -6,7 +6,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-export default function RaftCard() {
+export default function RaftCard({data}) {
   //  this is the format of data
   //   const data = {
   //   title: "Bhrampuri to Rishikesh",
