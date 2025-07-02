@@ -3,11 +3,13 @@ import Footer from "./Common/Footer.jsx"
 import ActivityCards from "./User/ActivityCards.jsx"
 import HeroSection from "./User/HeroSection.jsx"
 import RaftCard from "./User/RaftCard.jsx"
+import ServiceCard from "./User/ServiceCard.jsx"
 
 export {
     Navbar,
     Footer,
     ActivityCards,
     HeroSection,
-    RaftCard
+    RaftCard,
+    ServiceCard
 }
