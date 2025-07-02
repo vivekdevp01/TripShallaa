@@ -4,6 +4,7 @@ import ActivityCards from "./User/ActivityCards.jsx"
 import HeroSection from "./User/HeroSection.jsx"
 import RaftCard from "./User/RaftCard.jsx"
 import ServiceCard from "./User/ServiceCard.jsx"
+import PrivateRoute from "./Common/PrivateRoute.jsx"
 
 export {
     Navbar,
@@ -11,5 +12,6 @@ export {
     ActivityCards,
     HeroSection,
     RaftCard,
-    ServiceCard
+    ServiceCard,
+    PrivateRoute
 }
