@@ -1,5 +1,5 @@
-import locationIcon from '../assets/location.svg'
-import clockIcon from '../assets/clock.svg'
+import locationIcon from '../../assets/location.svg'
+import clockIcon from '../../assets/clock.svg'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
