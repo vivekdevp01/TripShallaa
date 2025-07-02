@@ -1,4 +1,3 @@
-// src/components/PrivateRoute.jsx
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx"
 
@@ -13,16 +12,13 @@ const PrivateRoute = ({ allowedRoles, children }) => {
   }
 
   if (!user) {
-    // Redirect to login, but save the current location to return to after login
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   if (!allowedRoles.includes(user.role)) {
-    // User doesn't have required role
     return <Navigate to="/unauthorized" replace />;
   }
 
-  // If using nested routes with Outlet
   return children ? children : <Outlet />;
 };
 

@@ -13,7 +13,7 @@ const PublicRoutes = () => {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} /> {/* ✅ Add this */}
+      <Route path="/signup" element={<Signup />} />
     </Routes>
   );
 };

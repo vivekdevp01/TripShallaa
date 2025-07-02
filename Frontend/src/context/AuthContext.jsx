@@ -8,16 +8,15 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // ✅ This should only run once on mount
     const token = localStorage.getItem("token");
     const role = localStorage.getItem("role");
 
     if (token && role) {
-      setUser({ token, role }); // ✅ only sets once
+      setUser({ token, role });
     }
 
-    setLoading(false); // ✅ only once
-  }, []); // ✅ empty dependency array prevents infinite loop
+    setLoading(false);
+  }, []);
 
   const login = (token, role) => {
     localStorage.setItem("token", token);
@@ -32,8 +31,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signup = async (name, email, password) => {
-    // implement actual signup logic or dummy
-    login("dummyToken", "user");
+    login("token", "user");
   };
 
   return (
