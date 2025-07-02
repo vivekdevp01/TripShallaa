@@ -44,8 +44,8 @@ export default function RaftingSection() {
   ];
 
   return (
-    <section className="w-full max-w-screen-2xl mx-auto px-6 py-12">
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 text-center">Rafting Packages</h2>
+    <section className="w-full max-w-screen-2xl px-6 py-12">
+      <h2 className="text-xl md:text-3xl font-medium mb-4">Rafting</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {raftingData.map((raft, index) => (
