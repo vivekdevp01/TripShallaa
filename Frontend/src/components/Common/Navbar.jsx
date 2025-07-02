@@ -1,5 +1,6 @@
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import { theme } from "../../theme.js"
+import logo from "../../assets/logo.jpeg";
 
 const Navbar = () => {
   const navItems = [
@@ -42,7 +43,11 @@ const Navbar = () => {
     <nav className={`relative w-full h-[110px] border-b ${theme.colors.navBorder} bg-white shadow-sm`}>
       {/* logo */}
       <div className={`absolute ${theme.dimensions.logo} top-3 left-12 h-24 w-96 border ${theme.colors.navBorder} flex items-center justify-center`}>
-        <span className={`${theme.colors.logo} text-3xl font-bold`}> Logo </span>
+        {/* <span className={`${theme.colors.logo} text-3xl font-bold`}>  </span> */}
+        <img 
+          src={logo}
+          alt="Logo"
+          className="w-full h-full object-fit" />
       </div>
 
       {/* routes */}
