@@ -1,57 +1,65 @@
-import locationIcon from '../../assets/location.svg'
-import clockIcon from '../../assets/clock.svg'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
+import locationIcon from '../../assets/location.svg';
+import clockIcon from '../../assets/clock.svg';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
-export default function RaftCard({data}) {
-
+export default function RaftCard({ data }) {
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden max-w-sm">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-lg border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+      {/* img */}
       <Swiper
         navigation={true}
-        modules={[Navigation, Pagination]}
-        className="w-full h-48 object-cover"
+        modules={[Navigation]}
+        className="w-full h-44 object-cover"
       >
         {data.images.map((img, idx) => (
           <SwiperSlide key={idx}>
             <img
               src={img}
-              alt={`Slide ${idx}`}
-              className="w-full h-48 object-cover"
+              alt={`${data.title} - ${idx}`}
+              className="w-full h-full object-cover"
             />
           </SwiperSlide>
         ))}
       </Swiper>
 
       <div className="p-4">
-        <p className="font-semibold text-2xl">
-          {data.description}
-        </p>
-        <div className="flex items-center gap-1.5 mt-1.5">
-          <img src={locationIcon} alt="Location Icon" className="w-4 h-4" />
-          <span className="font-medium text-xl">
-            {data.location}
-          </span>
+        
+        <p className="text-sm font-medium text-purple-600 mb-1">{data.time}</p>
+        
+
+        <h3 className="text-lg font-bold text-gray-800 mb-1">{data.title || data.description}</h3>
+        
+        <div className="flex items-center gap-1.5 mb-2">
+          <img src={locationIcon} alt="Location" className="w-4 h-4" />
+          <span className="text-sm text-gray-700">{data.location}</span>
         </div>
-        <div className="flex items-center gap-1.5 mt-1.5">
-          <img src={clockIcon} alt="Location Icon" className="w-4 h-4" />
-          <span className="font-medium text-xl">
-            {data.time}
-          </span>
+        
+        {/* distance  */}
+        {data.distance && (
+          <div className="flex items-center gap-1.5 mb-3">
+            <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+            </svg>
+            <span className="text-sm text-gray-700">Distance: {data.distance}</span>
+          </div>
+        )}
+        
+        {/* inr */}
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-lg font-bold text-gray-900">₹{data.price.toLocaleString()}</span>
+          {data.originalPrice && (
+            <span className="text-sm line-through text-gray-400">₹{data.originalPrice.toLocaleString()}</span>
+          )}
         </div>
-        <div className="mt-2 flex items-center space-x-2">
-          <span className="text-lg font-bold text-black">INR {data.price}</span>
-          <span className="line-through text-gray-400">
-            INR {data.originalPrice}
-          </span>
-        </div>
-        <button className="mt-4 w-full bg-orange-500 text-white py-2 rounded-md font-medium hover:bg-orange-600 transition">
+        
+        
+        <button className="w-full py-2 bg-orange-600 text-white font-medium rounded-md hover:bg-orange-700 transition-colors">
           Book Now
         </button>
       </div>
     </div>
-  )
+  );
 }
