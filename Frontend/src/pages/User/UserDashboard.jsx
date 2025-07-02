@@ -4,7 +4,7 @@ export default function UserDashboard() {
   return (
     <div>
       <HeroSection />
-      {/* <ActivityCards /> */}
+      <ActivityCards />
     </div>
   );
 };

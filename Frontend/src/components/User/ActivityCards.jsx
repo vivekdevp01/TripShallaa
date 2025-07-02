@@ -1,3 +1,5 @@
+import { RaftCard } from "../index.components.js";
+
 export default function ActivityCards() {
   const activities = [
     {

@@ -1,5 +1,6 @@
 export default function HeroSection() {
   return (
+    <>
     <section className="w-full max-w-screen-2xl mx-auto h-max px-6 py-12 flex flex-col lg:flex-row justify-between items-center gap-8">
       {/* thumbnails */}
       <div className="w-full lg:w-2/3 h-96 flex flex-col sm:flex-row gap-2">
@@ -41,9 +42,19 @@ export default function HeroSection() {
           Trusted, affordable, and unforgettable - your next adventure starts here.
         </p>
         <button className="mt-8 px-8 py-3 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors duration-300 shadow-md">
-          BOOK
+          Book Now
         </button>
       </div>
     </section>
+
+    <section className="w-full max-w-screen-2xl mx-auto h-max px-6 py-12 bg-gray-50 rounded-xl">
+      
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Why Choosing Us?</h2>
+        <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+          AdventureHub is your go-to platform for exciting adventures at the most budget-friendly prices. We pride ourselves on offering the lowest rates and affordable packages for rafting, camping, and other thrilling activities. As a trusted and reliable website, we ensure top-quality services, secure bookings, and a memorable experience without breaking the bank. Explore more, spend less, and adventure confidently with AdventureHub!
+        </p>
+
+    </section>
+    </>
   );
 }
