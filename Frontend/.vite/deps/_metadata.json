@@ -1,0 +1,58 @@
+{
+  "hash": "50fe66a0",
+  "configHash": "21b84cab",
+  "lockfileHash": "27f0cd3a",
+  "browserHash": "00d29532",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "75be17d7",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "1c4138ce",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "4fc1f8bd",
+      "needsInterop": false
+    },
+    "swiper/react": {
+      "src": "../../node_modules/swiper/swiper-react.mjs",
+      "file": "swiper_react.js",
+      "fileHash": "b943419a",
+      "needsInterop": false
+    },
+    "swiper/modules": {
+      "src": "../../node_modules/swiper/modules/index.mjs",
+      "file": "swiper_modules.js",
+      "fileHash": "357fa384",
+      "needsInterop": false
+    },
+    "react-icons/fa": {
+      "src": "../../node_modules/react-icons/fa/index.mjs",
+      "file": "react-icons_fa.js",
+      "fileHash": "cb001405",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-XQIPT53K": {
+      "file": "chunk-XQIPT53K.js"
+    },
+    "chunk-KS2M7ZJI": {
+      "file": "chunk-KS2M7ZJI.js"
+    },
+    "chunk-QFLFZMJ5": {
+      "file": "chunk-QFLFZMJ5.js"
+    },
+    "chunk-5WRI5ZAA": {
+      "file": "chunk-5WRI5ZAA.js"
+    }
+  }
+}
