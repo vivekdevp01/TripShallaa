@@ -1,35 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
+// Admin Pages
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import PostCamping from "./pages/admin/PostCamping";
+import PostRafting from "./pages/admin/PostRafting";
+import PostPlaces from "./pages/admin/PostPlaces";
 
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <BrowserRouter>
+      <Routes>
+        {/* Admin Routes */}
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/camping" element={<PostCamping />} />
+        <Route path="/admin/rafting" element={<PostRafting />} />
+        <Route path="/admin/places" element={<PostPlaces />} />
 
-export default App
+        {/* Optional: fallback for unmatched routes */}
+        {/* <Route path="*" element={<div className="text-center mt-10 text-red-500">404 Page Not Found</div>} /> */}
+      </Routes>
+    </BrowserRouter>
+  );
+}
