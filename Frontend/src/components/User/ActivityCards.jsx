@@ -184,7 +184,7 @@ export default function RaftingSection() {
           ))}
         </div>
 
-        <style jsx global>{`
+        <style>{`
         .swiper-button-prev,
         .swiper-button-next {
           color: white;
@@ -213,7 +213,7 @@ export default function RaftingSection() {
           ))}
         </div>
 
-        <style jsx global>{`
+        <style>{`
         .swiper-button-prev,
         .swiper-button-next {
           color: white;
@@ -246,7 +246,7 @@ export default function RaftingSection() {
           ))}
         </div>
 
-        <style jsx global>{`
+        <style>{`
         .swiper-button-prev,
         .swiper-button-next {
           color: white;
