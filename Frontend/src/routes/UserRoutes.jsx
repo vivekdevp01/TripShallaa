@@ -7,7 +7,9 @@ import {
   Rafting,
   Camping,
   AdventureActivities,
+  DetailView
 } from "../pages/index.pages.js";
+import { campData } from '../utils/data.js';
 
 const UserRoutes = () => {
   return (
@@ -17,6 +19,7 @@ const UserRoutes = () => {
         <Route path="vehicle-rent" element={<VehicleRent />} />
         <Route path="rafting" element={<Rafting />} />
         <Route path="camping" element={<Camping />} />
+        <Route path="detail" element={<DetailView data={campData} />} />
         <Route path="adventure-activities" element={<AdventureActivities />} />
       </Route>
     </Routes>
