@@ -6,7 +6,7 @@ import './index.css';
 
 import UserRoutes from './routes/UserRoutes.jsx';
 import AdminRoutes from './routes/AdminRoutes.jsx';
-import { AdminDashboard, Login, Signup } from "./pages/index.pages.js";
+import { Login, Signup } from "./pages/index.pages.js";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -15,11 +15,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          
+
+          {/* User Routes */}
           <Route path="/*" element={<UserRoutes />} />
 
-          <Route path="/admin" element={<AdminDashboard />} />
+          {/* Admin Routes */}
+          <Route path="/admin/*" element={<AdminRoutes />} />
 
+          {/* Catch-all */}
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </AuthProvider>
