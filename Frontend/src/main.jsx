@@ -22,9 +22,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           </Route>
 
           <Route path="/admin" element={<PrivateRoute allowedRoles={["admin"]} />}>
-            <Route element={<App />}>
-              <Route index element={<AdminDashboard />} />
-            </Route>
+            {/* <Route element={<App />}> */}
+              {/* <Route index element={<AdminDashboard />} /> */}
+            {/* </Route> */}
           </Route>
 
           <Route path="*" element={<Navigate to="/login" replace />} />
