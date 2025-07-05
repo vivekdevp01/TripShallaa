@@ -1,7 +1,9 @@
-import React from "react"
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { AdminDashboard } from "../pages/index.pages.js"
+import App from '../App';
+import { AdminDashboard } from "../pages/index.pages.js";
 import { PrivateRoute } from "../components/index.components.js";
+
 const AdminRoutes = () => {
   return (
     <Routes>
@@ -9,10 +11,12 @@ const AdminRoutes = () => {
         path="/admin"
         element={
           <PrivateRoute allowedRoles={["admin"]}>
-            <AdminDashboard />
+            <App />
           </PrivateRoute>
         }
-      />
+      >
+        <Route index element={<AdminDashboard />} />
+      </Route>
     </Routes>
   );
 };
