@@ -1,7 +1,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import App from '../App';
-import { AdminDashboard } from "../pages/index.pages.js";
+import {
+  AdminDashboard,
+} from "../pages/index.pages.js";
 import { PrivateRoute } from "../components/index.components.js";
 
 const AdminRoutes = () => {
@@ -16,6 +18,7 @@ const AdminRoutes = () => {
         }
       >
         <Route index element={<AdminDashboard />} />
+        <Route path="" element={<AdminDashboard />} />
       </Route>
     </Routes>
   );
