@@ -1,25 +1,86 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { campData, pricingData } from "../../utils/data";
 import { Link } from "react-scroll";
+import axios from "axios"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function MountainViewCamp() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        try {
+            const response = await axios.post('https://api/v1/', formData);
+
+            if (response.status === 200) {
+                toast.success('Thank you! Your message has been sent successfully.', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
+                setFormData({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    message: ''
+                });
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            toast.error('Something went wrong. Please try again later.', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <div className="font-sans text-gray-800 overflow-x-hidden">
             {/* hero */}
-            <section id="home" className="relative h-screen pt-20">
+            <section id="home" className="relative h-screen pt-16 md:pt-20">
                 {/* bg img */}
                 <div className="absolute inset-0">
                     <img
                         src={campData.gallery[0].src}
                         alt="Mountain View Camp"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-fit"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60"></div>
                 </div>
 
                 {/* navs */}
-                <nav className="hidden md:block absolute top-8 right-8 z-10">
-                    <ul className="flex space-x-3">
+                <nav className="hidden md:block absolute top-4 md:top-8 right-4 md:right-8 z-10">
+                    <ul className="flex flex-wrap justify-end gap-2">
                         {[
                             { to: "home", text: "Home", icon: "M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" },
                             { to: "about", text: "About", icon: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" },
@@ -34,13 +95,13 @@ export default function MountainViewCamp() {
                                     smooth={true}
                                     offset={-70}
                                     duration={500}
-                                    className="relative overflow-hidden group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3 px-6 rounded-full inline-flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95 cursor-pointer"
+                                    className="relative overflow-hidden group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-2 px-4 md:py-3 md:px-6 rounded-full inline-flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95 cursor-pointer text-sm md:text-base"
                                 >
                                     <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></span>
                                     <span className="relative z-10">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            className="h-5 w-5 mr-2 inline"
+                                            className="h-4 w-4 md:h-5 md:w-5 mr-1 md:mr-2 inline"
                                             viewBox="0 0 20 20"
                                             fill="currentColor"
                                         >
@@ -54,24 +115,35 @@ export default function MountainViewCamp() {
                     </ul>
                 </nav>
 
+                {/* mobile menu */}
+                <button className="md:hidden absolute top-4 right-4 z-10 bg-orange-500 text-white p-3 rounded-full shadow-lg">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
                 {/* content */}
-                <div className="relative h-full flex items-center justify-center text-center px-4 z-10">
-                    <div className="max-w-3xl">
-                        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Mountain View Camp Rishikesh</h1>
-                        <p className="text-xl text-white/90 mb-8">Experience the perfect blend of adventure and tranquility at our riverside camping site in Rishikesh</p>
+                <div className="relative h-full flex items-center justify-center text-center px-4 sm:px-6 z-10">
+                    <div className="max-w-3xl w-full">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+                            Mountain View Camp Rishikesh
+                        </h1>
+                        <p className="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 px-2 sm:px-0">
+                            Experience the perfect blend of adventure and tranquility at our riverside camping site in Rishikesh
+                        </p>
                         <Link
                             to="contact"
                             spy={true}
                             smooth={true}
                             offset={-70}
                             duration={500}
-                            className="relative overflow-hidden group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 px-10 rounded-full inline-flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95"
+                            className="relative overflow-hidden group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3 px-8 sm:py-4 sm:px-10 rounded-full inline-flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95 text-sm sm:text-base"
                         >
                             <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></span>
                             <span className="relative z-10 flex items-center">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className="h-5 w-5 mr-2"
+                                    className="h-4 w-4 sm:h-5 sm:w-5 mr-2"
                                     viewBox="0 0 20 20"
                                     fill="currentColor"
                                 >
@@ -295,7 +367,7 @@ export default function MountainViewCamp() {
             {/* form */}
             <section id="contact" className="relative py-20 overflow-hidden bg-gradient-to-br from-orange-500 to-orange-600">
                 <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/brushed-alum.png')]"></div>
-                
+
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl font-bold text-white mb-4">Contact Us</h2>
@@ -309,7 +381,7 @@ export default function MountainViewCamp() {
                         {/* contact */}
                         <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 shadow-lg">
                             <h3 className="text-2xl font-semibold text-white mb-6">Get In Touch</h3>
-                            
+
                             <div className="space-y-6">
                                 <div className="flex items-start">
                                     <div className="bg-white/20 p-3 rounded-full mr-4 flex-shrink-0">
@@ -320,7 +392,7 @@ export default function MountainViewCamp() {
                                     </div>
                                     <p className="text-white text-opacity-90 text-lg">{campData.contact.address}</p>
                                 </div>
-                                
+
                                 <div className="flex items-center">
                                     <div className="bg-white/20 p-3 rounded-full mr-4 flex-shrink-0">
                                         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -329,7 +401,7 @@ export default function MountainViewCamp() {
                                     </div>
                                     <p className="text-white text-opacity-90 text-lg">{campData.contact.phone}</p>
                                 </div>
-                                
+
                                 <div className="flex items-center">
                                     <div className="bg-white/20 p-3 rounded-full mr-4 flex-shrink-0">
                                         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -344,9 +416,9 @@ export default function MountainViewCamp() {
                                 <h4 className="text-xl font-medium text-white mb-4">Follow Us</h4>
                                 <div className="flex space-x-4">
                                     {['facebook', 'instagram', 'twitter'].map((social) => (
-                                        <a 
-                                            key={social} 
-                                            href="#" 
+                                        <a
+                                            key={social}
+                                            href="#"
                                             className="bg-white/20 hover:bg-white/30 p-3 rounded-full transition-all duration-300"
                                         >
                                             <span className="sr-only">{social}</span>
@@ -361,41 +433,70 @@ export default function MountainViewCamp() {
 
                         {/* query */}
                         <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 shadow-lg">
+                            <ToastContainer />
                             <h3 className="text-2xl font-semibold text-white mb-6">Send Us a Message</h3>
-                            <form className="space-y-5">
+
+                            <form onSubmit={handleSubmit} className="space-y-5">
                                 <div>
-                                    <input 
-                                        type="text" 
-                                        placeholder="Your Name" 
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        placeholder="Your Name"
+                                        className="w-full px-5 py-3 rounded-lg bg-white/10 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        placeholder="Your Email"
+                                        className="w-full px-5 py-3 rounded-lg bg-white/10 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        placeholder="Your Phone"
                                         className="w-full px-5 py-3 rounded-lg bg-white/10 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                                     />
                                 </div>
                                 <div>
-                                    <input 
-                                        type="email" 
-                                        placeholder="Your Email" 
-                                        className="w-full px-5 py-3 rounded-lg bg-white/10 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
-                                    />
-                                </div>
-                                <div>
-                                    <input 
-                                        type="tel" 
-                                        placeholder="Your Phone" 
-                                        className="w-full px-5 py-3 rounded-lg bg-white/10 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
-                                    />
-                                </div>
-                                <div>
-                                    <textarea 
-                                        placeholder="Your Message" 
+                                    <textarea
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        placeholder="Your Message"
                                         rows="4"
                                         className="w-full px-5 py-3 rounded-lg bg-white/10 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                                        required
                                     ></textarea>
                                 </div>
-                                <button 
-                                    type="submit" 
-                                    className="w-full bg-white hover:bg-white/90 text-orange-600 font-bold py-4 px-6 rounded-lg transition duration-300 shadow-lg hover:shadow-xl"
+                                <button
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                    className={`w-full bg-white hover:bg-white/90 text-orange-600 font-bold py-4 px-6 rounded-lg transition duration-300 shadow-lg hover:shadow-xl ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                                        }`}
                                 >
-                                    Send Message
+                                    {isSubmitting ? (
+                                        <span className="flex items-center justify-center">
+                                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-orange-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            </svg>
+                                            Sending...
+                                        </span>
+                                    ) : (
+                                        'Send Message'
+                                    )}
                                 </button>
                             </form>
                         </div>
