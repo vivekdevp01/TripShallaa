@@ -12,6 +12,8 @@ import CampActivity from "./User/CampActivity.jsx"
 import CampPricing from "./User/CampPricing.jsx"
 import CampDetailHeroSection from "./User/CampDetailHeroSection.jsx"
 import CampContactInfo from "./User/CampContactInfo.jsx"
+import FAQ from "./User/FAQ.jsx"
+import TC from "./User/T&C.jsx"
 
 export {
     Navbar,
@@ -27,5 +29,7 @@ export {
     CampActivity,
     CampPricing,
     CampDetailHeroSection,
-    CampContactInfo
+    CampContactInfo,
+    FAQ,
+    TC
 }

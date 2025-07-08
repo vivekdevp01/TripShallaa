@@ -11,6 +11,8 @@ import PostCamping from "./Admin/PostCamping.jsx"
 import PostPlaces from "./Admin/PostPlaces.jsx"
 import PostRafting from "./Admin/PostRafting.jsx"
 import DetailView from "./User/DetailView.jsx"
+import FAQ from "./Public/FAQ.jsx"
+import TC from "./Public/T&C.jsx"
 
 export {
     UserDashboard,
@@ -22,6 +24,8 @@ export {
     
     Login,
     Signup,
+    FAQ,
+    TC,
     
     AdminDashboard,
     PostCamping,

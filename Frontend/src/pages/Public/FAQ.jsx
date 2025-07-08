@@ -1,4 +1,4 @@
-export default function TC() {
+export default function FAQ() {
     return(
         <div>
             hhh
