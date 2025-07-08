@@ -1,50 +1,50 @@
-
 import React from "react";
 
 export default function TermsAndConditions() {
   return (
-    <section className="max-w-5xl mx-auto px-6 py-12 text-[#333] font-sans">
-      <h1 className="text-4xl font-extrabold text-center text-orange-600 mb-8 tracking-tight leading-tight">
-        Terms & Conditions
-      </h1>
+    <section className="max-w-5xl mx-auto px-6 py-12 text-[#333] font-sans bg-white rounded-xl shadow-lg">
+      <div className="mb-10 text-center">
+        <h1 className="text-4xl font-extrabold text-orange-600 mb-4 tracking-tight leading-tight">
+          Terms & Conditions
+        </h1>
+        <p className="text-lg leading-relaxed text-gray-600">
+          Please read the terms thoroughly before booking with <strong>Tripshaala</strong>. For inquiries, call <span className="text-orange-500 font-semibold">8393928065</span>.
+        </p>
+      </div>
 
-      <p className="mb-6 text-lg leading-relaxed">
-        Team <strong>Tripshaala</strong> requests you to thoroughly check all the packages carefully. There is plenty of information associated with Camping and Rafting packages that cannot all be conveyed over a phone call. Please read the complete camp details on our website. For any questions, call us at <strong className="text-orange-500">8393928065</strong>.
-      </p>
+      <div className="mb-6 p-6 bg-orange-50 rounded-xl">
+        <p className="text-base leading-relaxed">
+          By submitting the advance amount, you agree to the following terms and conditions:
+        </p>
+      </div>
 
-      <p className="mb-8 text-lg leading-relaxed">
-        By submitting the advance amount, you agree to our regular terms & conditions listed below:
-      </p>
-
-      <ol className="list-decimal pl-6 space-y-4 text-base leading-relaxed">
-        <li><strong className="text-orange-500">Tripshaala</strong> may add, alter, or modify any terms without prior notice.</li>
-        <li>Firearms, weapons, or drugs are strictly prohibited.</li>
-        <li>Inform the camp manager about rafting plans during check-in to ensure advance booking.</li>
-        <li>
-          For rafting: anyone under the influence of alcohol/drugs, or medically unfit (heart issues, epilepsy, asthma, pregnancy, etc.) will not be allowed to participate. No refunds will be issued.
-        </li>
-        <li>No refund if visitors deny staying for personal reasons. Please read all camp details before booking.</li>
-        <li>No in-room service. No food/drinks/smoking inside cottages.</li>
-        <li>No discount for late check-in or early checkout.</li>
-        <li>No refund if activities are canceled due to weather or natural causes.</li>
-        <li>Package cost remains unchanged even if group size reduces.</li>
-        <li>Guests must sign a liability waiver and carry valid ID proof.</li>
-        <li>Camp facilities are for guests only. Drivers must arrange their own stay.</li>
-        <li>Activities are subject to guest readiness and punctuality.</li>
-        <li>Follow activity and meal timings.</li>
-        <li>Swimming in the Ganga is not allowed without life jackets. Avoid the river at night.</li>
-        <li>30% advance is required to reserve your stay. Balance due in cash at check-in.</li>
-        <li>If balance isn't paid, booking will be canceled from the guest’s end.</li>
-        <li>Guests are responsible for their belongings. We are not liable for any loss.</li>
-        <li>Photos on our website are real but may vary slightly season to season.</li>
-        <li>Guests must pay for any damages caused during their stay. Minimum charge ₹10,000.</li>
-        <li>Management reserves the right to accept/refuse bookings or evict guests as needed.</li>
-        <li>No insurance is provided for accidents, theft, or illness. Guests should arrange their own insurance.</li>
-        <li>You may need to trek 50–500 meters to reach camps. Check details or call for clarity.</li>
-        <li>Threatening or unreasonable behavior may result in eviction with no refund.</li>
-        <li><strong>1N 2D</strong> means 23 hours (3 meals), <strong>2N 3D</strong> means 48 hours (6 meals).</li>
-        <li>Disputes will be handled in Tehri courts, Uttarakhand jurisdiction.</li>
-        <li>For any queries, feel free to call or email us.</li>
+      <ol className="list-decimal pl-6 space-y-4 text-base leading-relaxed text-gray-800">
+        <li><strong className="text-orange-500">Tripshaala</strong> may modify any terms without prior notice.</li>
+        <li>Firearms, weapons, and drugs are strictly prohibited.</li>
+        <li>Inform the camp manager about rafting plans during check-in to ensure booking.</li>
+        <li><strong>Rafting Restrictions:</strong> Those under the influence or with medical conditions (e.g., heart problems, asthma, pregnancy) are not allowed. No refunds.</li>
+        <li><strong>No refund</strong> if visitors deny staying due to personal reasons.</li>
+        <li><strong>No in-room services.</strong> Food, drinks, and smoking are not allowed inside cottages.</li>
+        <li><strong>No discount</strong> for late check-in or early check-out.</li>
+        <li><strong>Weather-related cancellations</strong> will not be refunded.</li>
+        <li>Total package cost remains unchanged if group size decreases.</li>
+        <li><strong>ID proof</strong> and a signed waiver form are mandatory at check-in.</li>
+        <li>Camp facilities are exclusive to guests. Drivers must make their own arrangements.</li>
+        <li>All activities depend on guest readiness and punctuality.</li>
+        <li>Adhere to activity and meal schedules.</li>
+        <li><strong>No swimming</strong> in the Ganga without a life jacket. Avoid the river at night.</li>
+        <li><strong>30% advance</strong> is required to reserve. Balance due in cash at check-in.</li>
+        <li><strong>Unpaid balances</strong> at check-in result in booking cancellation.</li>
+        <li><strong>Tripshaala</strong> is not liable for lost belongings.</li>
+        <li>Photos on the website are authentic but may vary seasonally.</li>
+        <li><strong>Damage Policy:</strong> Guests are liable for damages. Minimum charge: ₹10,000.</li>
+        <li>Management reserves the right to decline or terminate any booking at any time.</li>
+        <li>No insurance is provided. Guests must arrange their own if needed.</li>
+        <li>Some camps require <strong>trekking 50–500 meters</strong>. Please check or call for clarity.</li>
+        <li><strong>Unreasonable behavior</strong> may lead to eviction without refund.</li>
+        <li><strong>Stay Duration:</strong> 1N 2D = 23 hrs (3 meals), 2N 3D = 48 hrs (6 meals).</li>
+        <li><strong>Legal:</strong> Disputes are under Tehri, Uttarakhand jurisdiction.</li>
+        <li>For queries, contact us via phone or email. We’re happy to assist.</li>
       </ol>
     </section>
   );
