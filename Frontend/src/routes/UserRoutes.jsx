@@ -10,6 +10,8 @@ import {
   DetailView
 } from "../pages/index.pages.js";
 import { campData } from '../utils/data.js';
+import TermsAndConditions from '../components/User/TermsAndConditions.jsx';
+import BookingPolicy from '../components/User/BookinPolicy.jsx';
 
 const UserRoutes = () => {
   return (
