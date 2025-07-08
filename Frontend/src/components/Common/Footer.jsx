@@ -22,6 +22,7 @@ export default function Footer() {
           <ul className="space-y-2">
             <li className="font-semibold">Rating</li>
             <li><Link to="/camping" className="hover:text-orange-500 transition-colors">Camping</Link></li>
+             <li><Link to="/booking" className="hover:text-orange-500 transition-colors">Booking policy</Link></li>
             <li><Link to="/adventure-activities" className="hover:text-orange-500 transition-colors">Adventure Activities</Link></li>
           </ul>
         </div>
