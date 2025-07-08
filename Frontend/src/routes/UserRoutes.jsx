@@ -21,6 +21,8 @@ const UserRoutes = () => {
         <Route path="camping" element={<Camping />} />
         <Route path="detail" element={<DetailView data={campData} />} />
         <Route path="adventure-activities" element={<AdventureActivities />} />
+          <Route path="terms" element={<TermsAndConditions />} />
+        <Route path="booking" element={<BookingPolicy />} />
       </Route>
     </Routes>
   );
